@@ -1,0 +1,57 @@
+﻿@model LMS.Models.Lessons
+
+@{
+    ViewBag.Title = "AddLesson";
+}
+
+<h2>AddLesson</h2>
+
+
+@using (Html.BeginForm("AddLesson", "FacultyAssignedCourses", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Lessons</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+    <div class="form-group">
+        <span>Select File:</span>
+        <input type="file" name="postedFile" />
+        <hr />
+        @*<input type="submit" value="Upload" />*@
+        <br />
+
+
+        @*@Html.LabelFor(model => model.VideoLink, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VideoLink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VideoLink, "", new { @class = "text-danger" })
+            </div>*@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { TextBoxMode = "MultiLine", Columns = "55px", Rows = "10px", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <span style="color:green">@ViewBag.Message</span>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "LessonList", new { FKCourseID = Session["FKCourseID"].ToString() })
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>

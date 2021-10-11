@@ -1,0 +1,1760 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LMS1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Admin_Registration">
+          <Key>
+            <PropertyRef Name="PKAdminID" />
+          </Key>
+          <Property Name="PKAdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="EmailID" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="LoginFailedCount" Type="int" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_AllRegistration">
+          <Key>
+            <PropertyRef Name="PKAllRegID" />
+          </Key>
+          <Property Name="PKAllRegID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailID" Type="nvarchar" MaxLength="60" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="Role" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Course">
+          <Key>
+            <PropertyRef Name="PKCourseID" />
+          </Key>
+          <Property Name="PKCourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="100" />
+          <Property Name="ShortDescription" Type="varchar" MaxLength="100" />
+          <Property Name="FullDescription" Type="varchar" MaxLength="5000" />
+          <Property Name="Duration" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="FKFacultyRegID" Type="int" />
+          <Property Name="CourseType" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="FKCourseCategoryID" Type="int" />
+          <Property Name="CourseImage" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Category">
+          <Key>
+            <PropertyRef Name="PKCourseCategoryID" />
+          </Key>
+          <Property Name="PKCourseCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Details">
+          <Key>
+            <PropertyRef Name="PKCourseDetailsID" />
+          </Key>
+          <Property Name="PKCourseDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKCourseID" Type="int" />
+          <Property Name="VideoLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="UploadedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="FKFacultyRegID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Payment">
+          <Key>
+            <PropertyRef Name="PKPaymentID" />
+          </Key>
+          <Property Name="PKPaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKCourseID" Type="int" />
+          <Property Name="FKStudentRegID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ModeOfPayment" Type="varchar" MaxLength="50" />
+          <Property Name="PaidDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Quiz_Que">
+          <Key>
+            <PropertyRef Name="PKQuizID" />
+          </Key>
+          <Property Name="PKQuizID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionNo" Type="int" />
+          <Property Name="Question" Type="nvarchar" MaxLength="500" />
+          <Property Name="OptionA" Type="varchar" MaxLength="500" />
+          <Property Name="OptionB" Type="varchar" MaxLength="500" />
+          <Property Name="OptionC" Type="varchar" MaxLength="500" />
+          <Property Name="OptionD" Type="varchar" MaxLength="500" />
+          <Property Name="NoOfCorrectAns" Type="int" />
+          <Property Name="CorrectAns" Type="varchar" MaxLength="50" />
+          <Property Name="FKFacultyRegID" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="FKCourseID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Registraion">
+          <Key>
+            <PropertyRef Name="PKCourseRegID" />
+          </Key>
+          <Property Name="PKCourseRegID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKCourseID" Type="int" />
+          <Property Name="FKStudentRegID" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="RegistrationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Faculty_Course">
+          <Key>
+            <PropertyRef Name="PKFacultyCourseID" />
+          </Key>
+          <Property Name="PKFacultyCourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKCourseID" Type="int" />
+          <Property Name="FKFacultyRegID" Type="int" />
+          <Property Name="AssignDate" Type="datetime" />
+          <Property Name="AssignedBy" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Faculty_Registration">
+          <Key>
+            <PropertyRef Name="PKFacultyRegID" />
+          </Key>
+          <Property Name="PKFacultyRegID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="AlternateContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="Skills" Type="varchar" MaxLength="500" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="10" />
+          <Property Name="LoginFailedCount" Type="int" />
+          <Property Name="LastLoginDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Feedback_Ans">
+          <Key>
+            <PropertyRef Name="PKFeedbackAnsID" />
+          </Key>
+          <Property Name="PKFeedbackAnsID" Type="int" Nullable="false" />
+          <Property Name="FKFeedbackQueID" Type="int" />
+          <Property Name="Answer" Type="varchar" MaxLength="500" />
+          <Property Name="FKStudentRegID" Type="int" />
+          <Property Name="FeedbackDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Feedback_Que">
+          <Key>
+            <PropertyRef Name="PKFeedbackQueID" />
+          </Key>
+          <Property Name="PKFeedbackQueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Quiz_Result">
+          <Key>
+            <PropertyRef Name="PKQuizResultID" />
+          </Key>
+          <Property Name="PKQuizResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKStudentRegID" Type="int" />
+          <Property Name="FKCourseID" Type="int" />
+          <Property Name="MarksObtained" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuizDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Registration">
+          <Key>
+            <PropertyRef Name="PKStudentRegID" />
+          </Key>
+          <Property Name="PKStudentRegID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="AlternateContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="10" />
+          <Property Name="LoginFailedCount" Type="int" />
+          <Property Name="LastLoginDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Tbl_Admin_Registration_Tbl_Admin_Registration">
+          <End Role="Tbl_Admin_Registration" Type="Self.Tbl_Admin_Registration" Multiplicity="1" />
+          <End Role="Tbl_Admin_Registration1" Type="Self.Tbl_Admin_Registration" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Admin_Registration">
+              <PropertyRef Name="PKAdminID" />
+            </Principal>
+            <Dependent Role="Tbl_Admin_Registration1">
+              <PropertyRef Name="PKAdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Category_Tbl_Admin_Registration">
+          <End Role="Tbl_Admin_Registration" Type="Self.Tbl_Admin_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Category" Type="Self.Tbl_Course_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Admin_Registration">
+              <PropertyRef Name="PKAdminID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Category">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Details_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Details" Type="Self.Tbl_Course_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Details">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Details_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Details" Type="Self.Tbl_Course_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Details">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Payment_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Payment" Type="Self.Tbl_Course_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Payment">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Payment_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="1" />
+          <End Role="Tbl_Course_Payment" Type="Self.Tbl_Course_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Payment">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Quiz_Que_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Quiz_Que" Type="Self.Tbl_Course_Quiz_Que" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Quiz_Que">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Quiz_Que" Type="Self.Tbl_Course_Quiz_Que" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Quiz_Que">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Registraion_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Registraion" Type="Self.Tbl_Course_Registraion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Registraion">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Registraion_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Registraion" Type="Self.Tbl_Course_Registraion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Registraion">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Tbl_Course_Category">
+          <End Role="Tbl_Course_Category" Type="Self.Tbl_Course_Category" Multiplicity="0..1" />
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course_Category">
+              <PropertyRef Name="PKCourseCategoryID" />
+            </Principal>
+            <Dependent Role="Tbl_Course">
+              <PropertyRef Name="FKCourseCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Faculty_Course_Tbl_Admin_Registration">
+          <End Role="Tbl_Admin_Registration" Type="Self.Tbl_Admin_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Faculty_Course" Type="Self.Tbl_Faculty_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Admin_Registration">
+              <PropertyRef Name="PKAdminID" />
+            </Principal>
+            <Dependent Role="Tbl_Faculty_Course">
+              <PropertyRef Name="AssignedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Faculty_Course_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Faculty_Course" Type="Self.Tbl_Faculty_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Faculty_Course">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Faculty_Course_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Faculty_Course" Type="Self.Tbl_Faculty_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Faculty_Course">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Feedback_Ans_Tbl_Feedback_Que">
+          <End Role="Tbl_Feedback_Que" Type="Self.Tbl_Feedback_Que" Multiplicity="0..1" />
+          <End Role="Tbl_Feedback_Ans" Type="Self.Tbl_Feedback_Ans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Feedback_Que">
+              <PropertyRef Name="PKFeedbackQueID" />
+            </Principal>
+            <Dependent Role="Tbl_Feedback_Ans">
+              <PropertyRef Name="FKFeedbackQueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Feedback_Ans_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Feedback_Ans" Type="Self.Tbl_Feedback_Ans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Feedback_Ans">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Student_Quiz_Result_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Student_Quiz_Result" Type="Self.Tbl_Student_Quiz_Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Student_Quiz_Result">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Student_Quiz_Result" Type="Self.Tbl_Student_Quiz_Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Student_Quiz_Result">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetAdminForgotPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAdminLoginInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetFacultyForgotPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetFacultyLoginInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetStudentForgotPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetStudentLoginInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PKAdminID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetAllFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetSingleFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PKFacultyRegID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetSingleStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PKStudentRegID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertTbl_Admin_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Role" Type="varchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertTbl_AllRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Role" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertTbl_Faculty_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="AlternateContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Skills" Type="varchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertTbl_Student_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="AlternateContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateAdminPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateFacultyPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateStudentPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateTbl_Admin_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PKAdminID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="Role" Type="varchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateTbl_Faculty_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PKFacultyRegID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="AlternateContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Skills" Type="varchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateTbl_Student_Registration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PKStudentRegID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="AlternateContactNo" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="DOB" Type="datetime" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="LMS1ModelStoreContainer">
+          <EntitySet Name="Tbl_Admin_Registration" EntityType="Self.Tbl_Admin_Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_AllRegistration" EntityType="Self.Tbl_AllRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Course" EntityType="Self.Tbl_Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Course_Category" EntityType="Self.Tbl_Course_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Course_Details" EntityType="Self.Tbl_Course_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Course_Payment" EntityType="Self.Tbl_Course_Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Course_Quiz_Que" EntityType="Self.Tbl_Course_Quiz_Que" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Course_Registraion" EntityType="Self.Tbl_Course_Registraion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Faculty_Course" EntityType="Self.Tbl_Faculty_Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Faculty_Registration" EntityType="Self.Tbl_Faculty_Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Feedback_Ans" EntityType="Self.Tbl_Feedback_Ans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Feedback_Que" EntityType="Self.Tbl_Feedback_Que" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Student_Quiz_Result" EntityType="Self.Tbl_Student_Quiz_Result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Student_Registration" EntityType="Self.Tbl_Student_Registration" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tbl_Admin_Registration_Tbl_Admin_Registration" Association="Self.FK_Tbl_Admin_Registration_Tbl_Admin_Registration">
+            <End Role="Tbl_Admin_Registration" EntitySet="Tbl_Admin_Registration" />
+            <End Role="Tbl_Admin_Registration1" EntitySet="Tbl_Admin_Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Category_Tbl_Admin_Registration" Association="Self.FK_Tbl_Course_Category_Tbl_Admin_Registration">
+            <End Role="Tbl_Admin_Registration" EntitySet="Tbl_Admin_Registration" />
+            <End Role="Tbl_Course_Category" EntitySet="Tbl_Course_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Details_Tbl_Course" Association="Self.FK_Tbl_Course_Details_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Details" EntitySet="Tbl_Course_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Details_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Course_Details_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Course_Details" EntitySet="Tbl_Course_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Payment_Tbl_Course" Association="Self.FK_Tbl_Course_Payment_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Payment" EntitySet="Tbl_Course_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Payment_Tbl_Student_Registration" Association="Self.FK_Tbl_Course_Payment_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Course_Payment" EntitySet="Tbl_Course_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Quiz_Que_Tbl_Course" Association="Self.FK_Tbl_Course_Quiz_Que_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Quiz_Que" EntitySet="Tbl_Course_Quiz_Que" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Course_Quiz_Que" EntitySet="Tbl_Course_Quiz_Que" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Registraion_Tbl_Course" Association="Self.FK_Tbl_Course_Registraion_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Registraion" EntitySet="Tbl_Course_Registraion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Registraion_Tbl_Student_Registration" Association="Self.FK_Tbl_Course_Registraion_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Course_Registraion" EntitySet="Tbl_Course_Registraion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Tbl_Course_Category" Association="Self.FK_Tbl_Course_Tbl_Course_Category">
+            <End Role="Tbl_Course_Category" EntitySet="Tbl_Course_Category" />
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Course_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Faculty_Course_Tbl_Admin_Registration" Association="Self.FK_Tbl_Faculty_Course_Tbl_Admin_Registration">
+            <End Role="Tbl_Admin_Registration" EntitySet="Tbl_Admin_Registration" />
+            <End Role="Tbl_Faculty_Course" EntitySet="Tbl_Faculty_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Faculty_Course_Tbl_Course" Association="Self.FK_Tbl_Faculty_Course_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Faculty_Course" EntitySet="Tbl_Faculty_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Faculty_Course_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Faculty_Course_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Faculty_Course" EntitySet="Tbl_Faculty_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Feedback_Ans_Tbl_Feedback_Que" Association="Self.FK_Tbl_Feedback_Ans_Tbl_Feedback_Que">
+            <End Role="Tbl_Feedback_Que" EntitySet="Tbl_Feedback_Que" />
+            <End Role="Tbl_Feedback_Ans" EntitySet="Tbl_Feedback_Ans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Feedback_Ans_Tbl_Student_Registration" Association="Self.FK_Tbl_Feedback_Ans_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Feedback_Ans" EntitySet="Tbl_Feedback_Ans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Student_Quiz_Result_Tbl_Course" Association="Self.FK_Tbl_Student_Quiz_Result_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Student_Quiz_Result" EntitySet="Tbl_Student_Quiz_Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration" Association="Self.FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Student_Quiz_Result" EntitySet="Tbl_Student_Quiz_Result" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LMS1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Admin_Registration">
+          <Key>
+            <PropertyRef Name="PKAdminID" />
+          </Key>
+          <Property Name="PKAdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginFailedCount" Type="Int32" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tbl_Admin_Registration1" Relationship="Self.FK_Tbl_Admin_Registration_Tbl_Admin_Registration" FromRole="Tbl_Admin_Registration" ToRole="Tbl_Admin_Registration1" />
+          <NavigationProperty Name="Tbl_Admin_Registration2" Relationship="Self.FK_Tbl_Admin_Registration_Tbl_Admin_Registration" FromRole="Tbl_Admin_Registration1" ToRole="Tbl_Admin_Registration" />
+          <NavigationProperty Name="Tbl_Course_Category" Relationship="Self.FK_Tbl_Course_Category_Tbl_Admin_Registration" FromRole="Tbl_Admin_Registration" ToRole="Tbl_Course_Category" />
+          <NavigationProperty Name="Tbl_Faculty_Course" Relationship="Self.FK_Tbl_Faculty_Course_Tbl_Admin_Registration" FromRole="Tbl_Admin_Registration" ToRole="Tbl_Faculty_Course" />
+        </EntityType>
+        <EntityType Name="Tbl_AllRegistration">
+          <Key>
+            <PropertyRef Name="PKAllRegID" />
+          </Key>
+          <Property Name="PKAllRegID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailID" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Course">
+          <Key>
+            <PropertyRef Name="PKCourseID" />
+          </Key>
+          <Property Name="PKCourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FullDescription" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="FKFacultyRegID" Type="Int32" />
+          <Property Name="CourseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="FKCourseCategoryID" Type="Int32" />
+          <Property Name="CourseImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <NavigationProperty Name="Tbl_Course_Details" Relationship="Self.FK_Tbl_Course_Details_Tbl_Course" FromRole="Tbl_Course" ToRole="Tbl_Course_Details" />
+          <NavigationProperty Name="Tbl_Course_Payment" Relationship="Self.FK_Tbl_Course_Payment_Tbl_Course" FromRole="Tbl_Course" ToRole="Tbl_Course_Payment" />
+          <NavigationProperty Name="Tbl_Course_Quiz_Que" Relationship="Self.FK_Tbl_Course_Quiz_Que_Tbl_Course" FromRole="Tbl_Course" ToRole="Tbl_Course_Quiz_Que" />
+          <NavigationProperty Name="Tbl_Course_Registraion" Relationship="Self.FK_Tbl_Course_Registraion_Tbl_Course" FromRole="Tbl_Course" ToRole="Tbl_Course_Registraion" />
+          <NavigationProperty Name="Tbl_Course_Category" Relationship="Self.FK_Tbl_Course_Tbl_Course_Category" FromRole="Tbl_Course" ToRole="Tbl_Course_Category" />
+          <NavigationProperty Name="Tbl_Faculty_Registration" Relationship="Self.FK_Tbl_Course_Tbl_Faculty_Registration" FromRole="Tbl_Course" ToRole="Tbl_Faculty_Registration" />
+          <NavigationProperty Name="Tbl_Faculty_Course" Relationship="Self.FK_Tbl_Faculty_Course_Tbl_Course" FromRole="Tbl_Course" ToRole="Tbl_Faculty_Course" />
+          <NavigationProperty Name="Tbl_Student_Quiz_Result" Relationship="Self.FK_Tbl_Student_Quiz_Result_Tbl_Course" FromRole="Tbl_Course" ToRole="Tbl_Student_Quiz_Result" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Category">
+          <Key>
+            <PropertyRef Name="PKCourseCategoryID" />
+          </Key>
+          <Property Name="PKCourseCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Admin_Registration" Relationship="Self.FK_Tbl_Course_Category_Tbl_Admin_Registration" FromRole="Tbl_Course_Category" ToRole="Tbl_Admin_Registration" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Course_Tbl_Course_Category" FromRole="Tbl_Course_Category" ToRole="Tbl_Course" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Details">
+          <Key>
+            <PropertyRef Name="PKCourseDetailsID" />
+          </Key>
+          <Property Name="PKCourseDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKCourseID" Type="Int32" />
+          <Property Name="VideoLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UploadedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FKFacultyRegID" Type="Int32" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Course_Details_Tbl_Course" FromRole="Tbl_Course_Details" ToRole="Tbl_Course" />
+          <NavigationProperty Name="Tbl_Faculty_Registration" Relationship="Self.FK_Tbl_Course_Details_Tbl_Faculty_Registration" FromRole="Tbl_Course_Details" ToRole="Tbl_Faculty_Registration" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Payment">
+          <Key>
+            <PropertyRef Name="PKPaymentID" />
+          </Key>
+          <Property Name="PKPaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKCourseID" Type="Int32" />
+          <Property Name="FKStudentRegID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ModeOfPayment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaidDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Course_Payment_Tbl_Course" FromRole="Tbl_Course_Payment" ToRole="Tbl_Course" />
+          <NavigationProperty Name="Tbl_Student_Registration" Relationship="Self.FK_Tbl_Course_Payment_Tbl_Student_Registration" FromRole="Tbl_Course_Payment" ToRole="Tbl_Student_Registration" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Quiz_Que">
+          <Key>
+            <PropertyRef Name="PKQuizID" />
+          </Key>
+          <Property Name="PKQuizID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionNo" Type="Int32" />
+          <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OptionA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OptionB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OptionC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OptionD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfCorrectAns" Type="Int32" />
+          <Property Name="CorrectAns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FKFacultyRegID" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FKCourseID" Type="Int32" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Course_Quiz_Que_Tbl_Course" FromRole="Tbl_Course_Quiz_Que" ToRole="Tbl_Course" />
+          <NavigationProperty Name="Tbl_Faculty_Registration" Relationship="Self.FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration" FromRole="Tbl_Course_Quiz_Que" ToRole="Tbl_Faculty_Registration" />
+        </EntityType>
+        <EntityType Name="Tbl_Course_Registraion">
+          <Key>
+            <PropertyRef Name="PKCourseRegID" />
+          </Key>
+          <Property Name="PKCourseRegID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKCourseID" Type="Int32" />
+          <Property Name="FKStudentRegID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Course_Registraion_Tbl_Course" FromRole="Tbl_Course_Registraion" ToRole="Tbl_Course" />
+          <NavigationProperty Name="Tbl_Student_Registration" Relationship="Self.FK_Tbl_Course_Registraion_Tbl_Student_Registration" FromRole="Tbl_Course_Registraion" ToRole="Tbl_Student_Registration" />
+        </EntityType>
+        <EntityType Name="Tbl_Faculty_Course">
+          <Key>
+            <PropertyRef Name="PKFacultyCourseID" />
+          </Key>
+          <Property Name="PKFacultyCourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKCourseID" Type="Int32" />
+          <Property Name="FKFacultyRegID" Type="Int32" />
+          <Property Name="AssignDate" Type="DateTime" Precision="3" />
+          <Property Name="AssignedBy" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Admin_Registration" Relationship="Self.FK_Tbl_Faculty_Course_Tbl_Admin_Registration" FromRole="Tbl_Faculty_Course" ToRole="Tbl_Admin_Registration" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Faculty_Course_Tbl_Course" FromRole="Tbl_Faculty_Course" ToRole="Tbl_Course" />
+          <NavigationProperty Name="Tbl_Faculty_Registration" Relationship="Self.FK_Tbl_Faculty_Course_Tbl_Faculty_Registration" FromRole="Tbl_Faculty_Course" ToRole="Tbl_Faculty_Registration" />
+        </EntityType>
+        <EntityType Name="Tbl_Faculty_Registration">
+          <Key>
+            <PropertyRef Name="PKFacultyRegID" />
+          </Key>
+          <Property Name="PKFacultyRegID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlternateContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Skills" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LoginFailedCount" Type="Int32" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Course_Tbl_Faculty_Registration" FromRole="Tbl_Faculty_Registration" ToRole="Tbl_Course" />
+          <NavigationProperty Name="Tbl_Course_Details" Relationship="Self.FK_Tbl_Course_Details_Tbl_Faculty_Registration" FromRole="Tbl_Faculty_Registration" ToRole="Tbl_Course_Details" />
+          <NavigationProperty Name="Tbl_Course_Quiz_Que" Relationship="Self.FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration" FromRole="Tbl_Faculty_Registration" ToRole="Tbl_Course_Quiz_Que" />
+          <NavigationProperty Name="Tbl_Faculty_Course" Relationship="Self.FK_Tbl_Faculty_Course_Tbl_Faculty_Registration" FromRole="Tbl_Faculty_Registration" ToRole="Tbl_Faculty_Course" />
+        </EntityType>
+        <EntityType Name="Tbl_Feedback_Ans">
+          <Key>
+            <PropertyRef Name="PKFeedbackAnsID" />
+          </Key>
+          <Property Name="PKFeedbackAnsID" Type="Int32" Nullable="false" />
+          <Property Name="FKFeedbackQueID" Type="Int32" />
+          <Property Name="Answer" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FKStudentRegID" Type="Int32" />
+          <Property Name="FeedbackDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Feedback_Que" Relationship="Self.FK_Tbl_Feedback_Ans_Tbl_Feedback_Que" FromRole="Tbl_Feedback_Ans" ToRole="Tbl_Feedback_Que" />
+          <NavigationProperty Name="Tbl_Student_Registration" Relationship="Self.FK_Tbl_Feedback_Ans_Tbl_Student_Registration" FromRole="Tbl_Feedback_Ans" ToRole="Tbl_Student_Registration" />
+        </EntityType>
+        <EntityType Name="Tbl_Feedback_Que">
+          <Key>
+            <PropertyRef Name="PKFeedbackQueID" />
+          </Key>
+          <Property Name="PKFeedbackQueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Feedback_Ans" Relationship="Self.FK_Tbl_Feedback_Ans_Tbl_Feedback_Que" FromRole="Tbl_Feedback_Que" ToRole="Tbl_Feedback_Ans" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Quiz_Result">
+          <Key>
+            <PropertyRef Name="PKQuizResultID" />
+          </Key>
+          <Property Name="PKQuizResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKStudentRegID" Type="Int32" />
+          <Property Name="FKCourseID" Type="Int32" />
+          <Property Name="MarksObtained" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuizDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_Student_Quiz_Result_Tbl_Course" FromRole="Tbl_Student_Quiz_Result" ToRole="Tbl_Course" />
+          <NavigationProperty Name="Tbl_Student_Registration" Relationship="Self.FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration" FromRole="Tbl_Student_Quiz_Result" ToRole="Tbl_Student_Registration" />
+        </EntityType>
+        <EntityType Name="Tbl_Student_Registration">
+          <Key>
+            <PropertyRef Name="PKStudentRegID" />
+          </Key>
+          <Property Name="PKStudentRegID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlternateContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LoginFailedCount" Type="Int32" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tbl_Course_Payment" Relationship="Self.FK_Tbl_Course_Payment_Tbl_Student_Registration" FromRole="Tbl_Student_Registration" ToRole="Tbl_Course_Payment" />
+          <NavigationProperty Name="Tbl_Course_Registraion" Relationship="Self.FK_Tbl_Course_Registraion_Tbl_Student_Registration" FromRole="Tbl_Student_Registration" ToRole="Tbl_Course_Registraion" />
+          <NavigationProperty Name="Tbl_Feedback_Ans" Relationship="Self.FK_Tbl_Feedback_Ans_Tbl_Student_Registration" FromRole="Tbl_Student_Registration" ToRole="Tbl_Feedback_Ans" />
+          <NavigationProperty Name="Tbl_Student_Quiz_Result" Relationship="Self.FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration" FromRole="Tbl_Student_Registration" ToRole="Tbl_Student_Quiz_Result" />
+        </EntityType>
+        <Association Name="FK_Tbl_Admin_Registration_Tbl_Admin_Registration">
+          <End Role="Tbl_Admin_Registration" Type="Self.Tbl_Admin_Registration" Multiplicity="1" />
+          <End Role="Tbl_Admin_Registration1" Type="Self.Tbl_Admin_Registration" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Admin_Registration">
+              <PropertyRef Name="PKAdminID" />
+            </Principal>
+            <Dependent Role="Tbl_Admin_Registration1">
+              <PropertyRef Name="PKAdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Category_Tbl_Admin_Registration">
+          <End Role="Tbl_Admin_Registration" Type="Self.Tbl_Admin_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Category" Type="Self.Tbl_Course_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Admin_Registration">
+              <PropertyRef Name="PKAdminID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Category">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Faculty_Course_Tbl_Admin_Registration">
+          <End Role="Tbl_Admin_Registration" Type="Self.Tbl_Admin_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Faculty_Course" Type="Self.Tbl_Faculty_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Admin_Registration">
+              <PropertyRef Name="PKAdminID" />
+            </Principal>
+            <Dependent Role="Tbl_Faculty_Course">
+              <PropertyRef Name="AssignedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Details_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Details" Type="Self.Tbl_Course_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Details">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Payment_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Payment" Type="Self.Tbl_Course_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Payment">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Quiz_Que_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Quiz_Que" Type="Self.Tbl_Course_Quiz_Que" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Quiz_Que">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Registraion_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Registraion" Type="Self.Tbl_Course_Registraion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Registraion">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Tbl_Course_Category">
+          <End Role="Tbl_Course_Category" Type="Self.Tbl_Course_Category" Multiplicity="0..1" />
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course_Category">
+              <PropertyRef Name="PKCourseCategoryID" />
+            </Principal>
+            <Dependent Role="Tbl_Course">
+              <PropertyRef Name="FKCourseCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Faculty_Course_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Faculty_Course" Type="Self.Tbl_Faculty_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Faculty_Course">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Student_Quiz_Result_Tbl_Course">
+          <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+          <End Role="Tbl_Student_Quiz_Result" Type="Self.Tbl_Student_Quiz_Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Course">
+              <PropertyRef Name="PKCourseID" />
+            </Principal>
+            <Dependent Role="Tbl_Student_Quiz_Result">
+              <PropertyRef Name="FKCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Details_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Details" Type="Self.Tbl_Course_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Details">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Payment_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="1" />
+          <End Role="Tbl_Course_Payment" Type="Self.Tbl_Course_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Payment">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Quiz_Que" Type="Self.Tbl_Course_Quiz_Que" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Quiz_Que">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Course_Registraion_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Course_Registraion" Type="Self.Tbl_Course_Registraion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Course_Registraion">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Faculty_Course_Tbl_Faculty_Registration">
+          <End Role="Tbl_Faculty_Registration" Type="Self.Tbl_Faculty_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Faculty_Course" Type="Self.Tbl_Faculty_Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Faculty_Registration">
+              <PropertyRef Name="PKFacultyRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Faculty_Course">
+              <PropertyRef Name="FKFacultyRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Feedback_Ans_Tbl_Feedback_Que">
+          <End Role="Tbl_Feedback_Que" Type="Self.Tbl_Feedback_Que" Multiplicity="0..1" />
+          <End Role="Tbl_Feedback_Ans" Type="Self.Tbl_Feedback_Ans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Feedback_Que">
+              <PropertyRef Name="PKFeedbackQueID" />
+            </Principal>
+            <Dependent Role="Tbl_Feedback_Ans">
+              <PropertyRef Name="FKFeedbackQueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Feedback_Ans_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Feedback_Ans" Type="Self.Tbl_Feedback_Ans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Feedback_Ans">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration">
+          <End Role="Tbl_Student_Registration" Type="Self.Tbl_Student_Registration" Multiplicity="0..1" />
+          <End Role="Tbl_Student_Quiz_Result" Type="Self.Tbl_Student_Quiz_Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Student_Registration">
+              <PropertyRef Name="PKStudentRegID" />
+            </Principal>
+            <Dependent Role="Tbl_Student_Quiz_Result">
+              <PropertyRef Name="FKStudentRegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMS1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Admin_Registration" EntityType="Self.Tbl_Admin_Registration" />
+          <EntitySet Name="Tbl_AllRegistration" EntityType="Self.Tbl_AllRegistration" />
+          <EntitySet Name="Tbl_Course" EntityType="Self.Tbl_Course" />
+          <EntitySet Name="Tbl_Course_Category" EntityType="Self.Tbl_Course_Category" />
+          <EntitySet Name="Tbl_Course_Details" EntityType="Self.Tbl_Course_Details" />
+          <EntitySet Name="Tbl_Course_Payment" EntityType="Self.Tbl_Course_Payment" />
+          <EntitySet Name="Tbl_Course_Quiz_Que" EntityType="Self.Tbl_Course_Quiz_Que" />
+          <EntitySet Name="Tbl_Course_Registraion" EntityType="Self.Tbl_Course_Registraion" />
+          <EntitySet Name="Tbl_Faculty_Course" EntityType="Self.Tbl_Faculty_Course" />
+          <EntitySet Name="Tbl_Faculty_Registration" EntityType="Self.Tbl_Faculty_Registration" />
+          <EntitySet Name="Tbl_Feedback_Ans" EntityType="Self.Tbl_Feedback_Ans" />
+          <EntitySet Name="Tbl_Feedback_Que" EntityType="Self.Tbl_Feedback_Que" />
+          <EntitySet Name="Tbl_Student_Quiz_Result" EntityType="Self.Tbl_Student_Quiz_Result" />
+          <EntitySet Name="Tbl_Student_Registration" EntityType="Self.Tbl_Student_Registration" />
+          <AssociationSet Name="FK_Tbl_Admin_Registration_Tbl_Admin_Registration" Association="Self.FK_Tbl_Admin_Registration_Tbl_Admin_Registration">
+            <End Role="Tbl_Admin_Registration" EntitySet="Tbl_Admin_Registration" />
+            <End Role="Tbl_Admin_Registration1" EntitySet="Tbl_Admin_Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Category_Tbl_Admin_Registration" Association="Self.FK_Tbl_Course_Category_Tbl_Admin_Registration">
+            <End Role="Tbl_Admin_Registration" EntitySet="Tbl_Admin_Registration" />
+            <End Role="Tbl_Course_Category" EntitySet="Tbl_Course_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Faculty_Course_Tbl_Admin_Registration" Association="Self.FK_Tbl_Faculty_Course_Tbl_Admin_Registration">
+            <End Role="Tbl_Admin_Registration" EntitySet="Tbl_Admin_Registration" />
+            <End Role="Tbl_Faculty_Course" EntitySet="Tbl_Faculty_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Details_Tbl_Course" Association="Self.FK_Tbl_Course_Details_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Details" EntitySet="Tbl_Course_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Payment_Tbl_Course" Association="Self.FK_Tbl_Course_Payment_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Payment" EntitySet="Tbl_Course_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Quiz_Que_Tbl_Course" Association="Self.FK_Tbl_Course_Quiz_Que_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Quiz_Que" EntitySet="Tbl_Course_Quiz_Que" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Registraion_Tbl_Course" Association="Self.FK_Tbl_Course_Registraion_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Course_Registraion" EntitySet="Tbl_Course_Registraion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Tbl_Course_Category" Association="Self.FK_Tbl_Course_Tbl_Course_Category">
+            <End Role="Tbl_Course_Category" EntitySet="Tbl_Course_Category" />
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Course_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Faculty_Course_Tbl_Course" Association="Self.FK_Tbl_Faculty_Course_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Faculty_Course" EntitySet="Tbl_Faculty_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Student_Quiz_Result_Tbl_Course" Association="Self.FK_Tbl_Student_Quiz_Result_Tbl_Course">
+            <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+            <End Role="Tbl_Student_Quiz_Result" EntitySet="Tbl_Student_Quiz_Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Details_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Course_Details_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Course_Details" EntitySet="Tbl_Course_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Payment_Tbl_Student_Registration" Association="Self.FK_Tbl_Course_Payment_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Course_Payment" EntitySet="Tbl_Course_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Course_Quiz_Que" EntitySet="Tbl_Course_Quiz_Que" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Course_Registraion_Tbl_Student_Registration" Association="Self.FK_Tbl_Course_Registraion_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Course_Registraion" EntitySet="Tbl_Course_Registraion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Faculty_Course_Tbl_Faculty_Registration" Association="Self.FK_Tbl_Faculty_Course_Tbl_Faculty_Registration">
+            <End Role="Tbl_Faculty_Registration" EntitySet="Tbl_Faculty_Registration" />
+            <End Role="Tbl_Faculty_Course" EntitySet="Tbl_Faculty_Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Feedback_Ans_Tbl_Feedback_Que" Association="Self.FK_Tbl_Feedback_Ans_Tbl_Feedback_Que">
+            <End Role="Tbl_Feedback_Que" EntitySet="Tbl_Feedback_Que" />
+            <End Role="Tbl_Feedback_Ans" EntitySet="Tbl_Feedback_Ans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Feedback_Ans_Tbl_Student_Registration" Association="Self.FK_Tbl_Feedback_Ans_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Feedback_Ans" EntitySet="Tbl_Feedback_Ans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration" Association="Self.FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration">
+            <End Role="Tbl_Student_Registration" EntitySet="Tbl_Student_Registration" />
+            <End Role="Tbl_Student_Quiz_Result" EntitySet="Tbl_Student_Quiz_Result" />
+          </AssociationSet>
+          <FunctionImport Name="GetAdminForgotPassword" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAdminLoginInfo" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetFacultyForgotPassword" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetFacultyLoginInfo" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentForgotPassword" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentLoginInfo" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetAdmin" ReturnType="Collection(LMS1Model.SP_GetAdmin_Result)">
+            <Parameter Name="PKAdminID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetAllFaculty" ReturnType="Collection(LMS1Model.SP_GetAllFaculty_Result)" />
+          <FunctionImport Name="SP_GetSingleFaculty" ReturnType="Collection(LMS1Model.SP_GetSingleFaculty_Result)">
+            <Parameter Name="PKFacultyRegID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetSingleStudent" ReturnType="Collection(LMS1Model.SP_GetSingleStudent_Result)">
+            <Parameter Name="PKStudentRegID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertTbl_Admin_Registration">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertTbl_AllRegistration">
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertTbl_Faculty_Registration">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="ContactNo" Mode="In" Type="String" />
+            <Parameter Name="AlternateContactNo" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Skills" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertTbl_Student_Registration">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="ContactNo" Mode="In" Type="String" />
+            <Parameter Name="AlternateContactNo" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateAdminPassword">
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateFacultyPassword">
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateStudentPassword">
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateTbl_Admin_Registration">
+            <Parameter Name="PKAdminID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateTbl_Faculty_Registration">
+            <Parameter Name="PKFacultyRegID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="ContactNo" Mode="In" Type="String" />
+            <Parameter Name="AlternateContactNo" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Skills" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateTbl_Student_Registration">
+            <Parameter Name="PKStudentRegID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="ContactNo" Mode="In" Type="String" />
+            <Parameter Name="AlternateContactNo" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_GetAdmin_Result">
+          <Property Type="Int32" Name="PKAdminID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Role" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LoginFailedCount" Nullable="true" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_GetAllFaculty_Result">
+          <Property Type="Int32" Name="PKFacultyRegID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AlternateContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Skills" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="LoginFailedCount" Nullable="true" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GetSingleFaculty_Result">
+          <Property Type="Int32" Name="PKFacultyRegID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AlternateContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Skills" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="LoginFailedCount" Nullable="true" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GetSingleStudent_Result">
+          <Property Type="Int32" Name="PKStudentRegID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AlternateContactNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="LoginFailedCount" Nullable="true" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LMS1ModelStoreContainer" CdmEntityContainer="LMS1Entities1">
+          <EntitySetMapping Name="Tbl_Admin_Registration">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Admin_Registration">
+              <MappingFragment StoreEntitySet="Tbl_Admin_Registration">
+                <ScalarProperty Name="PKAdminID" ColumnName="PKAdminID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_AllRegistration">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_AllRegistration">
+              <MappingFragment StoreEntitySet="Tbl_AllRegistration">
+                <ScalarProperty Name="PKAllRegID" ColumnName="PKAllRegID" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Course">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Course">
+              <MappingFragment StoreEntitySet="Tbl_Course">
+                <ScalarProperty Name="PKCourseID" ColumnName="PKCourseID" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="FKFacultyRegID" ColumnName="FKFacultyRegID" />
+                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="FKCourseCategoryID" ColumnName="FKCourseCategoryID" />
+                <ScalarProperty Name="CourseImage" ColumnName="CourseImage" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Course_Category">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Course_Category">
+              <MappingFragment StoreEntitySet="Tbl_Course_Category">
+                <ScalarProperty Name="PKCourseCategoryID" ColumnName="PKCourseCategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Course_Details">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Course_Details">
+              <MappingFragment StoreEntitySet="Tbl_Course_Details">
+                <ScalarProperty Name="PKCourseDetailsID" ColumnName="PKCourseDetailsID" />
+                <ScalarProperty Name="FKCourseID" ColumnName="FKCourseID" />
+                <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
+                <ScalarProperty Name="UploadedDate" ColumnName="UploadedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FKFacultyRegID" ColumnName="FKFacultyRegID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Course_Payment">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Course_Payment">
+              <MappingFragment StoreEntitySet="Tbl_Course_Payment">
+                <ScalarProperty Name="PKPaymentID" ColumnName="PKPaymentID" />
+                <ScalarProperty Name="FKCourseID" ColumnName="FKCourseID" />
+                <ScalarProperty Name="FKStudentRegID" ColumnName="FKStudentRegID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ModeOfPayment" ColumnName="ModeOfPayment" />
+                <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Course_Quiz_Que">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Course_Quiz_Que">
+              <MappingFragment StoreEntitySet="Tbl_Course_Quiz_Que">
+                <ScalarProperty Name="PKQuizID" ColumnName="PKQuizID" />
+                <ScalarProperty Name="QuestionNo" ColumnName="QuestionNo" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="OptionA" ColumnName="OptionA" />
+                <ScalarProperty Name="OptionB" ColumnName="OptionB" />
+                <ScalarProperty Name="OptionC" ColumnName="OptionC" />
+                <ScalarProperty Name="OptionD" ColumnName="OptionD" />
+                <ScalarProperty Name="NoOfCorrectAns" ColumnName="NoOfCorrectAns" />
+                <ScalarProperty Name="CorrectAns" ColumnName="CorrectAns" />
+                <ScalarProperty Name="FKFacultyRegID" ColumnName="FKFacultyRegID" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FKCourseID" ColumnName="FKCourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Course_Registraion">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Course_Registraion">
+              <MappingFragment StoreEntitySet="Tbl_Course_Registraion">
+                <ScalarProperty Name="PKCourseRegID" ColumnName="PKCourseRegID" />
+                <ScalarProperty Name="FKCourseID" ColumnName="FKCourseID" />
+                <ScalarProperty Name="FKStudentRegID" ColumnName="FKStudentRegID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Faculty_Course">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Faculty_Course">
+              <MappingFragment StoreEntitySet="Tbl_Faculty_Course">
+                <ScalarProperty Name="PKFacultyCourseID" ColumnName="PKFacultyCourseID" />
+                <ScalarProperty Name="FKCourseID" ColumnName="FKCourseID" />
+                <ScalarProperty Name="FKFacultyRegID" ColumnName="FKFacultyRegID" />
+                <ScalarProperty Name="AssignDate" ColumnName="AssignDate" />
+                <ScalarProperty Name="AssignedBy" ColumnName="AssignedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Faculty_Registration">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Faculty_Registration">
+              <MappingFragment StoreEntitySet="Tbl_Faculty_Registration">
+                <ScalarProperty Name="PKFacultyRegID" ColumnName="PKFacultyRegID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="AlternateContactNo" ColumnName="AlternateContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Feedback_Ans">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Feedback_Ans">
+              <MappingFragment StoreEntitySet="Tbl_Feedback_Ans">
+                <ScalarProperty Name="PKFeedbackAnsID" ColumnName="PKFeedbackAnsID" />
+                <ScalarProperty Name="FKFeedbackQueID" ColumnName="FKFeedbackQueID" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="FKStudentRegID" ColumnName="FKStudentRegID" />
+                <ScalarProperty Name="FeedbackDate" ColumnName="FeedbackDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Feedback_Que">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Feedback_Que">
+              <MappingFragment StoreEntitySet="Tbl_Feedback_Que">
+                <ScalarProperty Name="PKFeedbackQueID" ColumnName="PKFeedbackQueID" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Student_Quiz_Result">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Student_Quiz_Result">
+              <MappingFragment StoreEntitySet="Tbl_Student_Quiz_Result">
+                <ScalarProperty Name="PKQuizResultID" ColumnName="PKQuizResultID" />
+                <ScalarProperty Name="FKStudentRegID" ColumnName="FKStudentRegID" />
+                <ScalarProperty Name="FKCourseID" ColumnName="FKCourseID" />
+                <ScalarProperty Name="MarksObtained" ColumnName="MarksObtained" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QuizDate" ColumnName="QuizDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Student_Registration">
+            <EntityTypeMapping TypeName="LMS1Model.Tbl_Student_Registration">
+              <MappingFragment StoreEntitySet="Tbl_Student_Registration">
+                <ScalarProperty Name="PKStudentRegID" ColumnName="PKStudentRegID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="AlternateContactNo" ColumnName="AlternateContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAdminForgotPassword" FunctionName="LMS1Model.Store.GetAdminForgotPassword" />
+          <FunctionImportMapping FunctionImportName="GetAdminLoginInfo" FunctionName="LMS1Model.Store.GetAdminLoginInfo" />
+          <FunctionImportMapping FunctionImportName="GetFacultyForgotPassword" FunctionName="LMS1Model.Store.GetFacultyForgotPassword" />
+          <FunctionImportMapping FunctionImportName="GetFacultyLoginInfo" FunctionName="LMS1Model.Store.GetFacultyLoginInfo" />
+          <FunctionImportMapping FunctionImportName="GetStudentForgotPassword" FunctionName="LMS1Model.Store.GetStudentForgotPassword" />
+          <FunctionImportMapping FunctionImportName="GetStudentLoginInfo" FunctionName="LMS1Model.Store.GetStudentLoginInfo" />
+          <FunctionImportMapping FunctionImportName="SP_GetAdmin" FunctionName="LMS1Model.Store.SP_GetAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LMS1Model.SP_GetAdmin_Result">
+                <ScalarProperty Name="PKAdminID" ColumnName="PKAdminID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetAllFaculty" FunctionName="LMS1Model.Store.SP_GetAllFaculty">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LMS1Model.SP_GetAllFaculty_Result">
+                <ScalarProperty Name="PKFacultyRegID" ColumnName="PKFacultyRegID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="AlternateContactNo" ColumnName="AlternateContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetSingleFaculty" FunctionName="LMS1Model.Store.SP_GetSingleFaculty">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LMS1Model.SP_GetSingleFaculty_Result">
+                <ScalarProperty Name="PKFacultyRegID" ColumnName="PKFacultyRegID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="AlternateContactNo" ColumnName="AlternateContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetSingleStudent" FunctionName="LMS1Model.Store.SP_GetSingleStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LMS1Model.SP_GetSingleStudent_Result">
+                <ScalarProperty Name="PKStudentRegID" ColumnName="PKStudentRegID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="AlternateContactNo" ColumnName="AlternateContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertTbl_Admin_Registration" FunctionName="LMS1Model.Store.SP_InsertTbl_Admin_Registration" />
+          <FunctionImportMapping FunctionImportName="SP_InsertTbl_AllRegistration" FunctionName="LMS1Model.Store.SP_InsertTbl_AllRegistration" />
+          <FunctionImportMapping FunctionImportName="SP_InsertTbl_Faculty_Registration" FunctionName="LMS1Model.Store.SP_InsertTbl_Faculty_Registration" />
+          <FunctionImportMapping FunctionImportName="SP_InsertTbl_Student_Registration" FunctionName="LMS1Model.Store.SP_InsertTbl_Student_Registration" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateAdminPassword" FunctionName="LMS1Model.Store.SP_UpdateAdminPassword" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateFacultyPassword" FunctionName="LMS1Model.Store.SP_UpdateFacultyPassword" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateStudentPassword" FunctionName="LMS1Model.Store.SP_UpdateStudentPassword" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateTbl_Admin_Registration" FunctionName="LMS1Model.Store.SP_UpdateTbl_Admin_Registration" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateTbl_Faculty_Registration" FunctionName="LMS1Model.Store.SP_UpdateTbl_Faculty_Registration" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateTbl_Student_Registration" FunctionName="LMS1Model.Store.SP_UpdateTbl_Student_Registration" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

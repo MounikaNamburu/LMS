@@ -1,0 +1,24 @@
+﻿body {
+    background-image: url('/images/Picture1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-primaryn {
+    color: #2A3456 !important;
+}
+
+.text-primary1 {
+    color: #fff !important;
+}
+
+.tablen {
+    background-color: #2A3456;
+}
+
+.btn-infon {
+    color: #fff;
+    background-color: #2A3456;
+    border-color: #2A3456;
+}

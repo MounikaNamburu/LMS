@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>Faculty</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/FacultyStyle.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"></span>
+                        <span class="title"><h1>LMS</h1></span>
+                </li>
+                </a>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <span class="title">My Account</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                        <span class="title">My Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                        <span class="title">Lessons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-question" aria-hidden="true"></i></span>
+                        <span class="title">MCQ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                        <span class="title">Password Updation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle" onclick="togglemenu();"></div>
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="search here">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </label>
+                </div>
+                <div class="user">
+                    <img src="user1.png">
+                </div>
+            </div>
+
+
+            <div class="cardbox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">MY Account</div>
+                        <div class="cardName">Acc Details</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">My Course</div>
+                        <div class="cardName">Course Details</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">Lessons</div>
+                        <div class="cardName">Update Lessons</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">MCQ</div>
+                        <div class="cardName">Update MCQ </div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-question" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <!--toggle function-->
+    <script>
+        function togglemenu() {
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active')
+        }
+    </script>
+
+
+
+</body>
+</html>

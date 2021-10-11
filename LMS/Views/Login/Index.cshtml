@@ -1,0 +1,204 @@
+﻿@model LMS.Models.StudentRegistration
+
+@{
+    Layout = null ;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <link href="~/Content/Login.css" rel="stylesheet" />
+</head>
+<body>
+    @*@using (Html.BeginForm())*@
+    @*@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+        {*@
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <!--Navbar-->
+        <header class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <!--lms logo-->
+                    <a class="navbar-brand" href="#">
+                        @*<img src="~/Content/LoginPageImages/lmslogo.jpg" alt="" width="80" height="60" />*@
+                        <img src="~/Content/LoginPageImages/lmslogo.jpg" alt="" width="80" height="60" />
+
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"> <h2><b>Home</b></h2></a>
+                            </li>
+
+                            @*<li class="nav-item">
+                                    <a class="nav-link" href="#">Whats New</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About Us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact US</a>
+                                </li>*@
+                        </ul>
+
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="bg-img" style="background: #ffffff">
+
+            @*<div class="content" style="background: url(~/Content/LoginPageImages/LMS1.jpg) ">*@
+            @*<div class="content" style="background: rgba(255, 99, 71, 0.5); ">*@
+
+
+            <div class="content" style="background: #2A3456; box-shadow: #ffffff; height: 480px">
+                <header>LOGIN</header>
+                <form action="#">
+                    <div class="field">
+                        <span class="fa fa-user"></span>
+                        @Html.TextBoxFor(model => model.EmailID, new { @Value = "", placeholder = "Enter Username", @required = "required", @class = "form-input" })
+                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="field space">
+                        <span class="fa fa-lock"></span>
+                        @Html.PasswordFor(model => model.Password, new { @Value = "", placeholder = "Enter Password", @required = "required", @class = "form-input" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                        <span class="show">SHOW</span>
+                    </div><br>
+                    @*<label class="selecttype" style="font-size: 18px;">Select Type:</label>
+                        @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
+                                 { new SelectListItem{Text="Student", Value="Student"},
+                                   new SelectListItem{Text="Faculty", Value="Faculty"},
+                                  new SelectListItem{Text="Admin", Value="Admin"}}, new { htmlAttributes = new { style = "width:170px; font-family: sans-serif;font-size: 20px;background-color: cadetblue;color: white;padding-bottom: 4px;padding-top: 4px;box-shadow: 1px 1px #fff;height: 30px; border: black;font-weight: bold;" } })*@
+                    <br>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @if (@ViewBag.Failedcount != null)
+                    {
+
+                        <label style="color:red"> Failed Attempt count is: @ViewBag.Failedcount</label>
+                    }
+
+                    @if (@ViewBag.NotValidUser != null)
+                    {
+
+                        <label style="color:red"> @ViewBag.NotValidUser</label>
+                    }
+                    @if (@ViewBag.Type != null)
+                    {
+
+                        <label style="color:red"> @ViewBag.Type</label>
+                    }
+
+                    <div class="field">
+                        <input type="submit" value="LOGIN">
+                    </div>
+
+
+                    <div class="pass">
+                        @*@Html.ActionLink("ForgotPass", "Index", "Forgot Password?")*@
+                        <a href="@Url.Action("Index", "ForgotPass")">Forgot Password?</a>
+                        @*<a href="#">Forgot Password?</a>*@
+                    </div>
+
+
+                    @*<div class="login">Or login with</div>*@
+
+
+                    @*<div class="link">
+                            <div class="facebook">
+                                <i class="fab fa-facebook-f"><span>Facebook</span></i>
+                            </div>
+                            <div class="instagram">
+                                <i class="fab fa-instagram"><span>Instagram</span></i>
+                            </div>
+                        </div>*@
+
+
+
+                    <br />
+                    <div class="signup">
+                        Don't have account?<br />
+                        <!--<a href="#">Register</a>-->
+                        <div class="dropdown dropright">
+
+                            <center>
+
+
+                                <button type="button" class="btn btn-outline-primary btn-block dropdown-toggle w-50" data-toggle="dropdown">
+                                    @*&nbsp;*@ <a href="@Url.Action("Index", "StudentNewReg")">REGISTER</a>
+
+
+                                </button>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="~/Account/RegisterAdmin">Admin</a>
+                                    <a class="dropdown-item" href="~/Account/RegisterStudent">Student</a>
+                                    <a class="dropdown-item" href="~/Account/RegisterFaculty">Faculty</a>
+                                </div>
+
+                            </center>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+
+
+       
+
+
+        
+    }
+    <script>
+        const pass_field = document.querySelector('.password');
+        const show_btn = document.querySelector('.show');
+        show_btn.addEventListener('click', function () {
+            if (pass_field.type === "password") {
+                pass_field.type = "text";
+                show_btn.style.color = "#3498db";
+                show_btn.textContent = "HIDE"
+            } else {
+                pass_field.type = "password";
+                show_btn.style.color = "#222"
+                show_btn.textContent = "SHOW"
+
+            }
+
+        });
+
+    </script>
+</body>
+</html>
+
+

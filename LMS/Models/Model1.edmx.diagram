@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e10454ec85e441c3a0f2f6c40a171d54" Name="Diagram1">
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Admin_Registration" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_AllRegistration" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Course" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Course_Category" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Course_Details" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Course_Payment" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Course_Quiz_Que" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Course_Registraion" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Faculty_Course" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Faculty_Registration" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Feedback_Ans" Width="1.5" PointX="8.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Feedback_Que" Width="1.5" PointX="6" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Student_Quiz_Result" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMS1Model.Tbl_Student_Registration" Width="1.5" PointX="6" PointY="20.5" IsExpanded="true" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Admin_Registration_Tbl_Admin_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Category_Tbl_Admin_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Faculty_Course_Tbl_Admin_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Details_Tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Payment_Tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Quiz_Que_Tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Registraion_Tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Tbl_Course_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Tbl_Faculty_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Faculty_Course_Tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Student_Quiz_Result_Tbl_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Details_Tbl_Faculty_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Payment_Tbl_Student_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Quiz_Que_Tbl_Faculty_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Course_Registraion_Tbl_Student_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Faculty_Course_Tbl_Faculty_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Feedback_Ans_Tbl_Feedback_Que" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Feedback_Ans_Tbl_Student_Registration" ManuallyRouted="false" />
+        <AssociationConnector Association="LMS1Model.FK_Tbl_Student_Quiz_Result_Tbl_Student_Registration" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

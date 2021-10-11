@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<link rel="stylesheet" type="text/css" href="style.css">*@
+    <link href="~/Content/FacultyDashboard.css" rel="stylesheet" />
+    <style>
+
+        #body {
+            overflow: hidden;
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+        }
+
+        #navigation {
+            position: fixed;
+            width: 500px;
+            height: 100%;
+            background: #2A3456;
+            transition: 0.5%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"></span>
+                        <span class="title"><h1>LMS</h1></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="active">
+                        <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                @*<li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <span class="title">My Account</span>
+            </a>
+        </li>*@
+                <li>
+
+                    <a href="~/Admin/CoursesList">
+                        <span class="icon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                        <span class="title">Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/FacultyRegistration/Index">
+
+
+                        <span class="icon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                        <span class="title">Faculty</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+                        <span class="title">Students</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa fa-inr" aria-hidden="true"></i></span>
+                        <span class="title">Payments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Login/Index">
+                        <span class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+                @*<li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                <span class="title">Password Updation</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                <span class="title">Logout</span>
+            </a>
+        </li>*@
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle" onclick="togglemenu();"></div>
+                @*<div class="search">
+                <label>
+                    <input type="text" placeholder="search here">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </label>
+            </div>*@
+                <div class="user">
+
+                    <img src="~/Content/LoginPageImages/user1.png" />
+                </div>
+            </div>
+
+
+            <div class="cardbox">
+                <div class="card">
+                    <div>
+                        <h2>100</h2>
+                        <span><h4>Students</h4></span>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h2>1000+</h2>
+                        <span><h4>Courses</h4></span>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h2>50+</h2>
+                        <span><h4>Faculty</h4></span>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h2>100000</h2>
+                        <span><h4>Payments</h4></span>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-cc-paypal" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="recent-grid">
+                <div class="payments">
+                    <div class="cardm">
+                        <div class="card-header">
+                            <h3>Recent Payments</h3>
+                            <button>
+                                <h6>See all <span class="fa fa-arrow-right"></h6>
+
+                                </span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <td><h4>Id</h4></td>
+                                            <td><h4>Name</h4></td>
+                                            <td><h4>Amount</h4></td>
+                                            <td><h4>Date</h4></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><h5>101</h5></td>
+                                            <td><h5>Ashi</h5></td>
+                                            <td><h5>5000</h5></td>
+                                            <td><h5>19-9-2021</h5></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td><h5>102</h5></td>
+                                            <td><h5>Arjun</h5></td>
+                                            <td><h5>3000</h5></td>
+                                            <td><h5>11-7-2021</h5></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td><h5>103</h5></td>
+                                            <td><h5>Darshi</h5></td>
+                                            <td><h5>2500</h5></td>
+                                            <td><h5>07-6-2021</h5></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td><h5>104</h5></td>
+                                            <td><h5>Meghana</h5></td>
+                                            <td><h5>5000</h5></td>
+                                            <td><h5>16-4-2021</h5></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="customers">
+                    <div class="cardm">
+                        <div class="card-header">
+                            <h3>New Students</h3>
+                            <button>
+                                <h6>See all <span class="fa fa-arrow-right"></h6>
+
+                                </span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="student">
+                                <div class="info">
+                                    <span class="fa fa-user"></span>
+                                    <div>
+                                        <h5>Arjun</h5>
+                                    </div>
+                                </div>
+                                <div class="contact" >
+                                    
+                                        <span class="fa fa-user-circle"></span>
+                                        <span class="fa fa-comment"></span>
+                                        <span class="fa fa-phone"></span>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="student">
+                                <div class="info">
+                                    <span class="fa fa-user"></span>
+                                    <div>
+                                        <h5>Anshi</h5>
+                                    </div>
+                                </div>
+                                <div class="contact">
+                                    <span class="fa fa-user-circle"></span>
+                                    <span class="fa fa-comment"></span>
+                                    <span class="fa fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="student">
+                                <div class="info">
+                                    <span class="fa fa-user"></span>
+                                    <div>
+                                        <h5>Neha</h5>
+                                    </div>
+                                </div>
+                                <div class="contact">
+                                    <span class="fa fa-user-circle"></span>
+                                    <span class="fa fa-comment"></span>
+                                    <span class="fa fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="student">
+                                <div class="info">
+                                    <span class="fa fa-user"></span>
+                                    <div>
+                                        <h5>Jatin</h5>
+                                    </div>
+                                </div>
+                                <div class="contact">
+                                    <span class="fa fa-user-circle"></span>
+                                    <span class="fa fa-comment"></span>
+                                    <span class="fa fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="student">
+                                <div class="info">
+                                    <span class="las la-user-tie"></span>
+                                    <div>
+                                        <h4>Arjun</h4>
+                                    </div>
+                                </div>
+                                <div class="contact">
+                                    <span class="las la-user-circle"></span>
+                                    <span class="las la-comment"></span>
+                                    <span class="las la-phone"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+    </div>
+
+
+
+    <!--toggle function-->
+    <script>
+        function togglemenu() {
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active')
+        }
+    </script>
+
+
+
+</body>
+</html>

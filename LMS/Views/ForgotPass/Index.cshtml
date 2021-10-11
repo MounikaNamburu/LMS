@@ -1,0 +1,120 @@
+﻿@model LMS.Models.StudentRegistration
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Forgot password</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="~/Content/ForgotPass.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    @using (Html.BeginForm("Index", "ForgotPass", FormMethod.Post))
+    {
+
+        <!--Navbar-->
+        <header class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <!--lms logo-->
+                    <a class="navbar-brand" href="#">
+                        <img src="~/Content/LoginPageImages/lmslogo.jpg" alt="" width="80" height="60" />
+                        @*<img src="lmslogo.jpg" alt="" width="80" height="60">*@
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Whats New</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About Us</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact US</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header><br />
+
+        <center>
+            @*<img class="i1" src="fp.png">*@
+            <img src="~/Content/fp.png" class="i1" />
+        </center>
+
+
+        <div class="form-box">
+            <h3>Forgot Password?</h3>
+            <div class="input-box">
+                <i class="far fa-envelope"></i>
+               
+                @Html.TextBoxFor(model => model.EmailID, new { @Value = " ", placeholder = "Enter Email ID", @required = "required" })
+                @*<input type="email" pattern=".+globex\.com" placeholder="Enter Email ID" id="myInput" required>*@
+            </div>
+            @*<div class="input-box">
+                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
+                     { new SelectListItem{Text="Student", Value="Student"},
+                       new SelectListItem{Text="Faculty", Value="Faculty"},
+                      new SelectListItem{Text="Admin", Value="Admin"}}, "Please select")
+            </div>*@
+            @if (@ViewBag.NotExist != null)
+            {
+
+                <label style="color:red"> @ViewBag.NotExist</label>
+            };
+
+            @if (@ViewBag.mailstatus != null)
+            {
+
+        <label style="color:red"> @ViewBag.mailstatus</label>
+            }
+
+           
+            <input type="submit" class="forgotbtn" value="SUBMIT">
+            @*<button class="forgotbtn">SUBMIT</button>*@
+
+
+        </div>
+
+
+
+        <footer>
+            <p>CG © 2021 - Learning Management System - Version 1.0</p>
+        </footer>
+
+
+
+    }
+    </body>
+</html>

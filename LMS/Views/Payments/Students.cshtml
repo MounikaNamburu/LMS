@@ -1,0 +1,91 @@
+﻿
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LMS</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/images/Picture1.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .text-primaryn {
+            color: #2A3456 !important;
+        }
+
+        .text-primary1 {
+            color: #fff !important;
+        }
+
+        .tablen {
+            background-color: #2A3456;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/bf4417af40.js"></script>
+</head>
+<body>
+    <nav class="navbar bg-blue navbar-dark">
+        <a class="navbar-brand font-weight-bold text-primaryn" href="@Url.Action("Index","Admin")">
+            LMS
+        </a>
+    </nav>
+    <p></p>
+
+    <div class="container">
+        <div class="bg-none text-primaryn">
+            <h1 style="text-align: center">
+                Student List <i class="fas fa-clipboard-list"></i>
+            </h1>
+        </div>
+
+        <br />
+        
+
+
+
+
+        <table class="table table-striped table-bordered">
+            <thead class="tablen">
+                <tr>
+                    <th class="text-primary1 font-weight-bold"
+                        style="text-align: center">Student Id</th>
+                    <th class="text-primary1 font-weight-bold"
+                        style="text-align: center">Student Name</th>
+                    <th class="text-primary1 font-weight-bold"
+                        style="text-align: center">Email</th>
+                    <th class="text-primary1 font-weight-bold"
+                        style="text-align: center">Contact N0</th>
+                    <th class="text-primary1 font-weight-bold"
+                        style="text-align: center">Course</th>
+                    <th class="text-primary1 font-weight-bold"
+                        style="text-align: center">Duration</th>
+                    <th class="text-primary1 font-weight-bold"
+                        style="text-align: center">Action</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td class="bg-light text-dark" style="text-align: center"></td>
+                    <td class="bg-light text-dark" style="text-align: center"></td>
+                    <td class="bg-light text-dark" style="text-align: center"></td>
+                    <td class="bg-light text-dark" style="text-align: center"></td>
+                    <td class="bg-light text-dark" style="text-align: center"></td>
+                    <td class="bg-light text-dark" style="text-align: center"></td>
+                    <td class="bg-light text-dark" style="text-align: center">
+                        <a class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿@model LMS.Models.Tbl_Course
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>LMS</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src="https://kit.fontawesome.com/bf4417af40.js"></script>
+    <style>
+
+        .bg-infon {
+            background-color: #2A3456;
+        }
+
+        .text-infon {
+            color: #2A3456 !important;
+        }
+
+        .btn-infon {
+            color: #fff;
+            background-color: #2A3456;
+            border-color: #2A3456;
+        }
+
+        .text-primary1 {
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-none navbar-dark">
+        <a class="navbar-brand font-weight-bold text-infon" href="~/Admin/Index">LMS</a>
+
+        <div class="collapse navbar-collapse " id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="font-weight-bold nav-link btn-infon bg-none text-primary1 rounded"
+                       href="@Url.Action("CoursesList","Admin")">Home<i class="fas fa-home"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="p-3 mb-2 bg-infon text-white col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center">Enter Course Details</h1>
+                <div class="card-body">
+                    @using (Html.BeginForm("AddCourses", "Admin", FormMethod.Post))
+                    {
+                        <div class="container">
+                            <div class="form-group">
+                                @Html.HiddenFor(x => x.PKCourseID)
+                                <label>Course Name</label>
+                                <br />
+                                @Html.ValidationMessageFor(x => x.CourseName, "", new { @class = "error" })
+                                @Html.TextBoxFor(x => x.CourseName, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Course Type</label>
+                                <br />
+                                @Html.ValidationMessageFor(x => x.CourseType, "", new { @class = "error" })
+                                @Html.TextBoxFor(x => x.CourseType, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <br />
+                                @Html.ValidationMessageFor(x => x.Duration, "", new { @class = "error" })
+                                @Html.TextBoxFor(x => x.Duration, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Price</label>
+                                <br />
+                                @Html.ValidationMessageFor(x => x.Price, "", new { @class = "error" })
+                                @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <br />
+                                @Html.ValidationMessageFor(x => x.FullDescription, "", new { @class = "error" })
+                                @Html.TextAreaFor(x => x.FullDescription, new { @class = "form-control", @rows = "20" })
+                            </div>
+                            <div style="text-align: center" class="box-footer">
+                                <button type="submit" class="btn btn-success rounded border border-primary">Submit</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
